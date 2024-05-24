@@ -27,6 +27,7 @@ body, html {
     border: 1px solid #ccc;
     border-radius: 4px;
     flex: 1;
+    width: calc(100% - 90px); /* Adjusted to prevent resizing */
 }
 
 .input-container button {
@@ -37,8 +38,14 @@ body, html {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    min-width: 80px; /* Adjusted to prevent resizing */
 }
 
 .input-container button:hover {
     background-color: #0056b3;
+}
+
+.top-half video, .bottom-half iframe {
+    width: 100%;
+    height: 100%;
 }
