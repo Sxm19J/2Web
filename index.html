@@ -1,1 +1,61 @@
-<iframe width="270" height="151.875" src="https://thotsclub.com/embed/616" frameborder="0" allowfullscreen></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Bypasser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .result, .error {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Link Bypasser</h1>
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL to bypass" required>
+            <button type="submit">Bypass</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <strong>Bypassed Link:</strong> <a href="{{ result }}" target="_blank">{{ result }}</a>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error" style="color: red;">
+                {{ error }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
