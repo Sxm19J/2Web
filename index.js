@@ -1,22 +1,16 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
-  res.send(`
-    <html>
-      <body>
-        <form method="POST" action="/bypass">
-          <label for="url">Enter URL to Bypass:</label>
-          <input type="text" id="url" name="url" required>
-          <button type="submit">Bypass</button>
-        </form>
-      </body>
-    </html>
-  `);
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.post('/bypass', async (req, res) => {
