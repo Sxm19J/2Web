@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, jsonify
 import requests
 
 app = Flask(__name__)
@@ -7,6 +7,9 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         url = request.form.get('url')
+
+        if not url:
+            return render_template('index.html', error='No URL provided.')
 
         try:
             # Bypass the link using the bypass.vip API
@@ -31,4 +34,3 @@ def index():
 
 if __name__ == "__main__":
     app.run()
-
